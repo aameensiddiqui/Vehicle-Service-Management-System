@@ -60,6 +60,8 @@ const Home = () => {
                   onMouseOut={() => {
                     setFlag2(false);
                   }}
+                  onClick={() => {navigator("/ContactUs")
+                  }}
                 >
                   Contact-Us
                 </a>
@@ -105,7 +107,7 @@ const Home = () => {
 
 
               <li class="nav-item dropdown">
-                <a
+                 <a
                   class="nav-link navbar-brand"
                   style={{ color: "blue" }}
                   href="#"
@@ -115,7 +117,7 @@ const Home = () => {
                   onMouseOut={() => {
                     setFlag4(false);
                   }}
-                  onClick={() => {navigator("/CustomerRegPage")
+                  onClick={() => {navigator("/CustRegistration")
                 }}
                 >
                   User Registeration
@@ -145,7 +147,7 @@ const Home = () => {
                   onMouseOut={() => {
                     setFlag5(false);
                   }}
-                  onClick={() => {navigator("/ServiceCenterRegPage")
+                  onClick={() => {navigator("/ServRegistration")
                   }}
                 >
                   Service Center Registeration
@@ -168,89 +170,3 @@ const Home = () => {
     );
   };
   export default Home;
-// function Home() {
-//     const mystate = useSelector((state) => state.logged);
-  
-//     return (
-//       <div>
-//         <div style={{ display: mystate.loggedIn ? "none" : "block" }}>
-//           <nav
-//             className="navbar navbar-expand-lg bg-light"
-            
-//           >
-//             <div className="container-fluid">
-//               <a className="navbar-brand" href="/">
-//                 VSMS
-//               </a>
-//               <button
-//                 className="navbar-toggler"
-//                 type="button"
-//                 data-bs-toggle="collapse"
-//                 data-bs-target="#navbarNavDropdown"
-//                 aria-controls="navbarNavDropdown"
-//                 aria-expanded="false"
-//                 aria-label="Toggle navigation"
-//               >
-//                 <span className="navbar-toggler-icon"></span>
-//               </button>
-//               <div className="collapse navbar-collapse" id="navbarNavDropdown">
-//                 <ul className="navbar-nav">
-//                   <li className="nav-item">
-//                     <a className="nav-link active" aria-current="page" href="/">
-//                       Home
-//                     </a>
-//                   </li>
-//                   <li className="nav-item">
-//                     <a className="nav-link" href="/contactus">
-//                       Contact Us
-//                     </a>
-//                   </li>
-//                   <li className="nav-item">
-//                     <a className="nav-link" href="/viewservicecenters">
-//                       Service Centers
-//                     </a>
-//                   </li>
-//                   <li className="nav-item">
-//                     <a className="nav-link" href="/Login">
-//                       Login
-//                     </a>
-//                   </li>
-//                   <li className="nav-item dropdown">
-//                     <a
-//                       className="nav-link dropdown-toggle"
-//                       href="#"
-//                       id="navbarDropdownMenuLink"
-//                       role="button"
-//                       data-bs-toggle="dropdown"
-//                       aria-expanded="false"
-//                     >
-//                       SignUp
-//                     </a>
-//                     <ul
-//                       className="dropdown-menu"
-//                       aria-labelledby="navbarDropdownMenuLink"
-//                     >
-//                       <li>
-//                         <a className="dropdown-item" href="/customerregistration">
-//                           User
-//                         </a>
-//                       </li>
-//                       <li>
-//                         <a
-//                           className="dropdown-item"
-//                           href="/servicecenterregistration"
-//                         >
-//                           Service Center
-//                         </a>
-//                       </li>
-//                     </ul>
-//                   </li>
-//                 </ul>
-//               </div>
-//             </div>
-//           </nav>
-//         </div>
-//         </div>
-//          );
-//            };
-//            export default Home;

@@ -1,31 +1,100 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { login } from "../slice";
+import "bootstrap/dist/css/bootstrap.min.css";
 
-function Login() {
+function LoginPage() {
+  const navigate = useNavigate();
+  const reduxAction = useDispatch();
   const [userId, setUserId] = useState("");
-  const [roleId, setRoleId] = useState("");
   const [password, setPassword] = useState("");
   const [userIdError, setUserIdError] = useState("");
   const [passwordError, setPasswordError] = useState("");
-  const [roleIdError, setRoleIdError] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Your form validation logic goes here
-    // If form is valid, handle submission
+
+    if (userId === "") {
+      setUserIdError("Please enter your user ID");
+      return;
+    } else if (userId.length < 3) {
+      setUserIdError("User ID must be at least 3 characters long");
+      return;
+    } else {
+      setUserIdError("");
+    }
+
+    if (password === "") {
+      setPasswordError("Please enter your password");
+      return;
+    } else if (!/[A-Z]/.test(password)) {
+      setPasswordError("Password must contain at least one capital letter");
+      return;
+    } else if (!/\d/.test(password)) {
+      setPasswordError("Password must contain at least one number");
+      return;
+    } else if (!/[!@#$%^&*]/.test(password)) {
+      setPasswordError(
+        "Password must contain at least one special character (!@#$%^&*)"
+      );
+      return;
+    } else {
+      setPasswordError("");
+    }
+
+    if (
+      userId !== "" &&
+      password !== "" &&
+      userId.length >= 3 &&
+      /[A-Z]/.test(password) &&
+      /\d/.test(password) &&
+      /[!@#$%^&*]/.test(password)
+    ) {
+      const params = {
+        userid: userId,
+        password: password,
+      };
+      const reqOptions = {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(params),
+      };
+      fetch("http://localhost:8080/logincheck", reqOptions)
+        .then((resp) => resp.json())
+        .then((jsonData) => {
+          localStorage.setItem("loginid", JSON.stringify(jsonData.loginid));
+          console.log(jsonData);
+          if (jsonData.roleid.roleid === 1) {
+            reduxAction(login());
+            navigate("/customerhome");
+          } else if (jsonData.roleid.roleid === 2) {
+            reduxAction(login());
+            navigate("/serviceHome");
+          } else if (jsonData.roleid.roleid === 3) {
+            reduxAction(login());
+            navigate("/adminHome");
+          }
+        })
+        .catch((e) => {
+          alert("Login Failed");
+          console.log(e);
+        });
+      // Handle form submission
+      console.log("User ID:", userId);
+      console.log("Password:", password);
+    }
   };
 
   const handleReset = () => {
     setUserId("");
-    setRoleId("");
     setPassword("");
     setUserIdError("");
-    setRoleIdError("");
     setPasswordError("");
   };
 
   return (
-    <div className="container">
+    <div className="container mt-5">
       <div className="row justify-content-center">
         <div className="col-md-6">
           <div className="card">
@@ -38,7 +107,7 @@ function Login() {
                     type="text"
                     id="user-id"
                     className={`form-control ${
-                      userIdError && "is-invalid"
+                      userIdError !== "" && "is-invalid"
                     }`}
                     value={userId}
                     onChange={(event) => setUserId(event.target.value)}
@@ -47,30 +116,13 @@ function Login() {
                     <div className="invalid-feedback">{userIdError}</div>
                   )}
                 </div>
-
-                <div className="form-group">
-                  <label htmlFor="role-id">Role ID:</label>
-                  <input
-                    type="text"
-                    id="role-id"
-                    className={`form-control ${
-                      roleIdError && "is-invalid"
-                    }`}
-                    value={roleId}
-                    onChange={(event) => setRoleId(event.target.value)}
-                  />
-                  {roleIdError && (
-                    <div className="invalid-feedback">{roleIdError}</div>
-                  )}
-                </div>
-
                 <div className="form-group">
                   <label htmlFor="password">Password:</label>
                   <input
                     type="password"
                     id="password"
                     className={`form-control ${
-                      passwordError && "is-invalid"
+                      passwordError !== "" && "is-invalid"
                     }`}
                     value={password}
                     onChange={(event) => setPassword(event.target.value)}
@@ -79,16 +131,16 @@ function Login() {
                     <div className="invalid-feedback">{passwordError}</div>
                   )}
                 </div>
-                <Link to="/forgotpwd" className="nav-link px-3">
-                  Forgot Password?
+                <Link to="/forgotpwd" className="nav-link">
+                  Forget Password?
                 </Link>
-                <div className="form-group">
-                  <button type="submit" className="btn btn-primary">
+                <div className="form-group mt-3">
+                  <button type="submit" className="btn btn-primary mr-2">
                     Submit
                   </button>
                   <button
                     type="button"
-                    className="btn btn-secondary ml-2"
+                    className="btn btn-secondary"
                     onClick={handleReset}
                   >
                     Reset
@@ -103,4 +155,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default LoginPage;
