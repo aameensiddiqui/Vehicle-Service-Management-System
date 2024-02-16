@@ -349,6 +349,7 @@ export default function BookAppointment() {
           </form>
         </div>
       </div>
+      
       <Outlet />
     </div>
   );

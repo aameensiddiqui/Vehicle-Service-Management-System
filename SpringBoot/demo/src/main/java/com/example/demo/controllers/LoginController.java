@@ -1,8 +1,6 @@
 package com.example.demo.controllers;
 
 import java.util.List;
-
-
 import java.util.ListIterator;
 import java.util.Map;
 
@@ -19,9 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.entities.Login;
-import com.example.demo.entities.PassBasedEnc;
 import com.example.demo.entities.Question;
-import com.example.demo.entities.SaltValue;
 import com.example.demo.services.LoginService;
 import com.example.demo.services.QuestionService;
 
@@ -35,46 +31,18 @@ public class LoginController {
 	@Autowired
 	QuestionService qserv;
 	
-	@Autowired
-	SaltValue saltValue;
-	
 	@GetMapping("/all")
 	public List<Login> getAllUsers()
 	{
 		return logserv.getAllUsers();
 	}
-	/*
-	@PostMapping("/logincheck")
-	public ResponseEntity<Login> getByDetails(@RequestBody Login userlogin)
-	{
-		List<Login> users = logserv.getAllUsers();
-		
-		String uid = userlogin.getUserid();
-		String pwd = userlogin.getPassword();
-			
-		//System.out.println(userlogin.getUserid());
-		ListIterator<Login> iterator = users.listIterator();  
-	
-		while (iterator.hasNext())  
-		{  
-			Login u = iterator.next(); 
-			if(uid.equals(u.getUserid()) && pwd.equals(u.getPassword())) 
-			{
-				System.out.println("User Login Details matched");
-				return ResponseEntity.ok().body(u);
-			}
-		}  
-		System.out.println("User Login Details NOT matched");
-		 return ResponseEntity.notFound().build();
-		
-	}*/
 	
 	@PostMapping("/logincheck")
 	public Login logincheck(@RequestBody Login login)
 	{
-		//System.out.println(saltValue.getSalt());
-		String encrypted=PassBasedEnc.generateSecurePassword(login.getPassword(),saltValue.getSalt());
-		return logserv.getLogin(login.getUserid(), encrypted);
+		// Removed the salt and encryption
+		String password = login.getPassword();
+		return logserv.getLogin(login.getUserid(), password);
 	}
 	
 	@GetMapping("/getLoginByLoginid")
@@ -92,14 +60,14 @@ public class LoginController {
 	@PostMapping("/changePwd")
 	public int changePassword(@RequestParam("newPwd") String newpassword,@RequestParam("userid") String userid )
 	{
-		String encrypted=PassBasedEnc.generateSecurePassword(newpassword,saltValue.getSalt());
-		return  logserv.changePassword(encrypted,userid);
+		// Removed the salt and encryption
+		String password = newpassword;
+		return  logserv.changePassword(password, userid);
 	}
 	
 	@PatchMapping("/updateReq/{loginid}")
 	public Login updateReq(@PathVariable("loginid") int loginid,@RequestBody Map<String,Object> field)
 	{
 		return logserv.updateByField(loginid,field);
-		
 	}
 }
