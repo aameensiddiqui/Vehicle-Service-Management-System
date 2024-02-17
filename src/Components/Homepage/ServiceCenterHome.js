@@ -10,7 +10,6 @@ const ServiceHome = () => {
 
 export default ServiceHome;*/
 
-
 import { useEffect, useState } from "react";
 import { NavDropdown } from "react-bootstrap";
 import { useSelector } from "react-redux";
@@ -121,7 +120,7 @@ export default function ServiceCenterHome() {
               </li>
               <li>
                 <Link
-                  to="/logout"
+                  to="/"
                   className="nav-link px-3"
                   //onClick={{ mystate: false }}
                   id="logout"

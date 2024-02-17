@@ -9,13 +9,24 @@ import ContactUs from "./Components/Homepage/ContactUs";
 import AdminHome from "./Components/UseCases/AdminHome";
 import CustomerHomePage from "./Components/Homepage/CustomerHomePage";
 import ServiceCenterHomePage from "./Components/Homepage/ServiceCenterHome";
-import Logout from "./Components/Logout";
+
 import VehDetails from "./Components/UseCases/VehDetails";
 import VehRegistration from "./Components/Register/VehRegistration";
 import Booking from "./Components/UseCases/Booking";
 import BookAppointment from "./Components/UseCases/BookAppointment";
 import Rating from "./Components/UseCases/Rating";
+
+import UpdateServiceProgress from "./Components/UseCases/UpdateServiceProgress";
 import CreatePackages from "./Components/UseCases/CreatePackages";
+
+import ChangePassword from "./Components/UseCases/ChangePassword";
+
+import ForgotPassword from "./Components/UseCases/ForgotPassword";
+
+import ViewServiceRequests from "./Components/UseCases/ViewServiceRequests";
+import Logout from "./Components/Logout";
+
+import ServiceProgress from "./Components/UseCases/ServiceProgress";
 
 function App() {
   return (
@@ -30,9 +41,10 @@ function App() {
         <Route path="customerhome" element={<CustomerHomePage />} />
         {/* <Route path="/serviceHome" element={<ServiceCenterHomePage />} /> */}
 
-        <Route path="/logout" element={<Logout />} />
+        <Route path="/Logout" element={<Logout />} />
         <Route path="/vehdetails" element={<VehDetails />}></Route>
-        <Route path="/adminHome" element={<AdminHome />} />
+
+        <Route path="forgotpwd" element={<ForgotPassword />} />
 
         {/* ---------------------------------- Customer ----------------------------------*/}
         <Route path="customerhome" element={<CustomerHomePage />}>
@@ -45,19 +57,32 @@ function App() {
           <Route path="viewScLogin" element={<Booking />}></Route>
 
           <Route path="rate" element={<Rating />}></Route>
+          <Route path="changePwd" element={<ChangePassword />}></Route>
+
+          <Route path="serviceprogress" element={<ServiceProgress />}></Route>
         </Route>
         {/* ---------------------------------- Customer ----------------------------------*/}
 
         {/* ---------------------------------- Service Center ----------------------------------*/}
-        { <Route path="serviceHome" element={<ServiceCenterHomePage />}>
-            
-            
-        <Route path="viewScLogin" element={<CreatePackages />}></Route>
-
-              </Route> }
+        <Route path="/serviceHome" element={<ServiceCenterHomePage />}>
+          <Route
+            path="updateProgress"
+            element={<UpdateServiceProgress />}
+          ></Route>
+          <Route path="viewScLogin" element={<CreatePackages />}></Route>
+          <Route path="changePwd" element={<ChangePassword />}></Route>
+        </Route>
         {/* ---------------------------------- Service Center ----------------------------------*/}
 
-        <Route path="viewScLogin" element={<CreatePackages />}></Route>
+        
+
+        {/*----------- Admin ----------*/}
+        <Route path="adminHome" element={<AdminHome />}>
+          <Route path="view" element={<ViewServiceRequests />}></Route>
+          <Route path="changePwd" element={<ChangePassword />}></Route>
+        </Route>
+
+        {/*----------- Admin----------*/}
       </Routes>
     </div>
   );

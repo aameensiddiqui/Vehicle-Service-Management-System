@@ -41,7 +41,7 @@ export default function ChangePassword() {
         if (response.status === 200) {
           // server returned 1
           alert("Password changed Successfully. Try Login...");
-          navigate("/userlogin");
+          navigate("/Login");
         } else {
           // server did not return 1
           alert("Wrong credentials");

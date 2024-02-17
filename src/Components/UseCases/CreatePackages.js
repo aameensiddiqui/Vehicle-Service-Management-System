@@ -89,7 +89,7 @@ export default function CreatePackages() {
           </table>
         </form>
       </div>
-      {JSON.stringify(facilities)}
+      {/* {JSON.stringify(facilities)} */}
     </div>
   );
 }
