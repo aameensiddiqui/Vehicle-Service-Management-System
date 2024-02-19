@@ -12,7 +12,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import com.example.demo.entities.Login;
-
+import java.util.List;
 
 @Transactional
 @Repository
@@ -37,4 +37,9 @@ public interface LoginRepository extends JpaRepository<Login, Integer> {
 	@Modifying
 	@Query("UPDATE Login SET password=:newpassword where userid=:userid")
 	public int changePassword(String newpassword,String userid);
+	
+	@Query("SELECT l FROM Login l WHERE l.roleid =2")
+    public List<Login> findByRoleId(int roleid);
+	
+	
 }

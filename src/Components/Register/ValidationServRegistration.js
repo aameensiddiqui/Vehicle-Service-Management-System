@@ -228,7 +228,7 @@ export default function ValidationServRegistration() {
                     })}
                   </select>
                 </td>
-              </tr>
+              </tr>appr
               <tr className="form-group">
                 <td>
                   <label htmlFor="fname">Service Center Name:</label>

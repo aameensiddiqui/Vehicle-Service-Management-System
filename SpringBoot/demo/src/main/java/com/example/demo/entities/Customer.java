@@ -50,8 +50,7 @@ public class Customer {
 	}
 
 
-	public Customer(Date birthdate, String firstname, String lastname, String lane, String contactno, String emailid,
-			Login login, Area area) {
+	public Customer(String firstname, String lastname,Date birthdate,String emailid, String lane, String contactno, Area area,Login login) {
 		super();
 		this.birthdate = birthdate;
 		this.firstname = firstname;

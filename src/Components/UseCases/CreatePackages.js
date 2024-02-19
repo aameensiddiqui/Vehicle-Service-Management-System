@@ -10,6 +10,14 @@ export default function CreatePackages() {
     facilities: [],
   };
 
+  const sendData = (e) => {
+    e.preventDefault();
+    const reqOptions = {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(obj),
+  }};
+  
   const reducer = (state, action) => {
     switch (action.type) {
       case "update":
@@ -22,6 +30,15 @@ export default function CreatePackages() {
     }
   };
 
+  ////////////////////////////Fix This Amin
+/*
+  const obj = {
+    rating: rating,
+    comment: comment,
+    customerid: custid,
+    servicecenterid: selectedsc,
+  };
+*/
   useEffect(() => {
     var scid = localStorage.getItem("scid");
     fetch("http://localhost:8080/getfacilities")

@@ -77,4 +77,9 @@ public class LoginService {
 	    return null;
 	  }
 	
+	public List<Login> getServiceCentersByRoleId() {
+	    int roleid = 2; // Filter by roleId equals 2
+	    return logrepo.findByRoleId(roleid);
+	}
+
 }

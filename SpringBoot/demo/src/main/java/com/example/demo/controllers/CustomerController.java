@@ -46,15 +46,14 @@ public class CustomerController {
         System.out.print("Customer Registration");
         Role role=roleserv.getRole(1);
         int questionid=(int)custreg.getQuestionid();
-        
-        // Removed the salt and encryption
+  
         String password = custreg.getPassword();
         
         Login login =new Login(custreg.getUserid(), password, custreg.getAnswer(), true, role, questionid);
         Login saved=logserv.save(login);
         
         Area area=areaserv.getArea(custreg.getAreaid());
-        Customer customer=new Customer(custreg.getBirthdate(),custreg.getFname(),custreg.getLname(),custreg.getContactno(),custreg.getEmailid(),custreg.getLane(),saved,area);
+        Customer customer=new Customer(custreg.getFname(),custreg.getLname(),custreg.getBirthdate(),custreg.getEmailid(),custreg.getLane(),custreg.getContactno(),area,saved);
         
         return custserv.save(customer);
     }

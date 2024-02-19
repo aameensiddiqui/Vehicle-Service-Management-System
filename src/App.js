@@ -6,7 +6,7 @@ import Login from "./Components/LoginFolder/LoginPage";
 import CustRegistration from "./Components/Register/CustRegistration";
 import ServRegistration from "./Components/Register/ServRegistration";
 import ContactUs from "./Components/Homepage/ContactUs";
-import AdminHome from "./Components/UseCases/AdminHome";
+import AdminHome from "./Components/Homepage/AdminHome";
 import CustomerHomePage from "./Components/Homepage/CustomerHomePage";
 import ServiceCenterHomePage from "./Components/Homepage/ServiceCenterHome";
 
@@ -73,8 +73,6 @@ function App() {
           <Route path="changePwd" element={<ChangePassword />}></Route>
         </Route>
         {/* ---------------------------------- Service Center ----------------------------------*/}
-
-        
 
         {/*----------- Admin ----------*/}
         <Route path="adminHome" element={<AdminHome />}>
