@@ -75,7 +75,7 @@ function App() {
         {/* ---------------------------------- Service Center ----------------------------------*/}
 
         {/*----------- Admin ----------*/}
-        <Route path="adminHome" element={<AdminHome />}>
+        <Route path="adminhome" element={<AdminHome />}>
           <Route path="view" element={<ViewServiceRequests />}></Route>
           <Route path="changePwd" element={<ChangePassword />}></Route>
         </Route>
