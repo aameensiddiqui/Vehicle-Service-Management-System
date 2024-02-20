@@ -25,6 +25,6 @@ public interface ServiceCenterRepository extends JpaRepository<ServiceCenter, In
 	public int getBookingLimitScById(int scid);
 	
 	
-	@Query("select sc from ServiceCenter sc where loginid=:loginid")
-	public ServiceCenter getDetailsByLoginid(Login loginid);
+	@Query("select sc from ServiceCenter sc where sc.login.loginid = :loginid")
+	public ServiceCenter getDetailsByLoginid(int loginid);
 }

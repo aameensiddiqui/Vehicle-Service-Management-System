@@ -60,8 +60,8 @@ public class ServiceCenterController {
     @GetMapping("/getScDetailsByLoginid")
     public ServiceCenter getDetailsByLoginid(@RequestParam("loginid") int loginid)
     {
-        Login login=loginserv.getLoginByLoginid(loginid);
-        return scserv.getDetailsByLoginid(login);
+//        Login login=loginserv.getLoginByLoginid(loginid);
+        return scserv.getDetailsByLoginid(loginid);
     }
     
     @GetMapping("/getScByBrandArea")

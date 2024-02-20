@@ -52,9 +52,9 @@ public class ServiceCenterService {
 		return  screpo.getScByBrandArea(brandid,areaid);
 	}
 	
-	public ServiceCenter getDetailsByLoginid(Login login)
+	public ServiceCenter getDetailsByLoginid(int loginid)
 	{
-		return screpo.getDetailsByLoginid(login);
+		return screpo.getDetailsByLoginid(loginid);
 	}
 	
 }

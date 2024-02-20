@@ -35,7 +35,7 @@ public class PackageDetails {
 	@NumberFormat(pattern = "#00000.00#")
 	double cost;
 	
-	@JsonIgnoreProperties("login")
+	
 	@JoinColumn(name="servicecenterid")
 	@ManyToOne
 	ServiceCenter servicecenter;
