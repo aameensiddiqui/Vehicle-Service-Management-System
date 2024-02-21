@@ -64,7 +64,7 @@ export default function AdminHome() {
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link
+                  <Link to="ViewAllSC"
                     className="nav-link px-3"
                     aria-current="page"
                   >
