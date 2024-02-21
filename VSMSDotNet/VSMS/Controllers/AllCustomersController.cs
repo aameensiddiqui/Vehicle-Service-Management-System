@@ -5,7 +5,7 @@ using VSMS.Models;
 
 namespace VSMS.Controllers
 {
-    [Route("api/[controller] / [action]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     [EnableCors]
     public class AllCustomersController : ControllerBase

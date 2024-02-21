@@ -22,9 +22,9 @@ export default function AdminHome() {
           style={{ boxShadow: "0 10px 10px 0 rgba(0,0,0,.2)" }}
         >
           <div className="container-fluid">
-            <a className="navbar-brand" href="/">
+            <Link to="/" className="navbar-brand">
               VSMS
-            </a>
+            </Link>
             <button
               className="navbar-toggler"
               type="button"
@@ -39,13 +39,37 @@ export default function AdminHome() {
             <div className="collapse navbar-collapse" id="navbarNavDropdown">
               <ul className="navbar-nav">
                 <li className="nav-item">
-                  <a
-                    className="nav-link active"
+                  <Link
+                    to="/adminhome"
+                    className="nav-link px-3"
                     aria-current="page"
-                    href="/adminhome"
                   >
                     Home
-                  </a>
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link
+                    to="ViewAllCust"
+                    className="nav-link px-3"
+                  >
+                    View All Customers
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link
+                    to="ViewAllVehicles"
+                    className="nav-link px-3"
+                  >
+                    View Registered Vehicles
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link
+                    className="nav-link px-3"
+                    aria-current="page"
+                  >
+                    View All Service Centres
+                  </Link>
                 </li>
                 <li>
                   <Link to="view" className="nav-link px-3">
@@ -75,7 +99,7 @@ export default function AdminHome() {
                   <Link
                     to="/"
                     className="nav-link px-3"
-                    //onClick={{ mystate: false }}
+                    onClick={{ mystate: false }}
                     id="logout"
                   >
                     Logout

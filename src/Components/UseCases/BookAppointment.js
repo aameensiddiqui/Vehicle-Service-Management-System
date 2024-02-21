@@ -1,8 +1,10 @@
+
 import { useEffect, useReducer, useState } from "react";
 import BackgroundSlider from "react-background-slider";
 import { useDispatch } from "react-redux";
 import { Outlet, useNavigate, Link } from "react-router-dom";
 import moment from "moment";
+import Notification from "../Notification";
 
 export default function BookAppointment() {
   let navigate = useNavigate();
@@ -225,7 +227,7 @@ export default function BookAppointment() {
           <span style={{ color: "red" }}> View Service Centers Menu</span>
         </h5>
       </span>
-      {/* ------------------ res --------------------------- */}
+     { /* ------------------ res --------------------------- */}
       <div id="res" style={{ display: showRes ? "none" : "block" }}>
         <div style={{ width: "auto", overflowX: "auto", overflowY: "auto" }}>
           <form onSubmit={(e) => e.preventDefault()}>

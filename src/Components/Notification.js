@@ -1,28 +1,18 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
+import "./Notification.css";
 
-const Notification = ({ message, onClose }) => {
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      onClose();
-    }, 5000); // Close the notification after 5 seconds
+const Notification = ({ message, type, onClose }) => {
+  const [visible, setVisible] = useState(true);
 
-    return () => {
-      clearTimeout(timer);
-    };
-  }, [onClose]);
+  const handleClose = () => {
+    setVisible(false);
+    onClose();
+  };
 
   return (
     <div
-      style={{
-        position: "fixed",
-        bottom: 20,
-        right: 20,
-        backgroundColor: "rgba(0, 0, 0, 0.8)",
-        color: "white",
-        padding: "10px 20px",
-        borderRadius: 5,
-        zIndex: 9999,
-      }}
+      className={`notification ${type} ${visible ? "show" : ""}`}
+      onClick={handleClose}
     >
       {message}
     </div>

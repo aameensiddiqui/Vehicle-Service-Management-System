@@ -69,16 +69,21 @@ function LoginPage() {
             reduxAction(login());
             navigate("/customerhome");
           } else if (jsonData.roleid.roleid === 2) {
-            reduxAction(login());
-            navigate("/serviceHome");
+            if (jsonData.status.status === 0) {
+             
+              setUserIdError("Login failed. Your account is not verified yet. Please try again later.");
+            } else {
+              reduxAction(login());
+              navigate("/serviceHome");
+            }
           } else if (jsonData.roleid.roleid === 3) {
             reduxAction(login());
             navigate("/adminHome");
           }
         })
         .catch((e) => {
-          alert("Login Failed");
           console.log(e);
+          setUserIdError("Login in failed. Please check your username and password and try again.");
         });
       // Handle form submission
       console.log("User ID:", userId);
@@ -151,6 +156,22 @@ function LoginPage() {
           </div>
         </div>
       </div>
+      {userIdError && (
+        <div
+          style={{
+            position: "fixed",
+            top: "20px",
+            left: "20px",
+            backgroundColor: "red",
+            padding: "10px",
+            borderRadius: "5px",
+            color: "white",
+            zIndex: 9999,
+          }}
+        >
+          {userIdError}
+        </div>
+      )}
     </div>
   );
 }

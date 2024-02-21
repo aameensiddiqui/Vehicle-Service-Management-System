@@ -2,22 +2,25 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using VSMS.Models;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace VSMS.Controllers
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
     [EnableCors]
-    public class AllServiceCentersController : ControllerBase
+    public class AllVehiclesController : ControllerBase
     {
         [HttpGet]
-        public List<Servicecenter> GetServicecenters() {
-            List<Servicecenter> servcent =  new List<Servicecenter>();
+        public List<Vehicle> GetVehicles()
+        {
+            List<Vehicle> vehicles = new List<Vehicle>();
             using (var db = new vsmsContext())
             {
-                servcent = db.Servicecenters.ToList();
+                vehicles = db.Vehicles.ToList();
             }
-            return servcent;
+            return vehicles;
         }
     }
 }

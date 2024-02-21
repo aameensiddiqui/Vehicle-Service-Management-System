@@ -1246,11 +1246,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\VSMSDotNet\\VSMS\\VSMS.csproj",
+      "projectUniqueName": "F:\\zBackup\\20240220 (1.0)\\VSMS\\VSMSDotNet\\VSMS\\VSMS.csproj",
       "projectName": "VSMS",
-      "projectPath": "D:\\VSMSDotNet\\VSMS\\VSMS.csproj",
+      "projectPath": "F:\\zBackup\\20240220 (1.0)\\VSMS\\VSMSDotNet\\VSMS\\VSMS.csproj",
       "packagesPath": "C:\\Users\\hp\\.nuget\\packages\\",
-      "outputPath": "D:\\VSMSDotNet\\VSMS\\obj\\",
+      "outputPath": "F:\\zBackup\\20240220 (1.0)\\VSMS\\VSMSDotNet\\VSMS\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\hp\\AppData\\Roaming\\NuGet\\NuGet.Config",

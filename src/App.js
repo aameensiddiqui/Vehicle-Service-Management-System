@@ -27,6 +27,11 @@ import ViewServiceRequests from "./Components/UseCases/ViewServiceRequests";
 import Logout from "./Components/Logout";
 
 import ServiceProgress from "./Components/UseCases/ServiceProgress";
+import ViewPackages from "./Components/UseCases/viewPackages";
+
+import ViewAllCust from "./Components/UseCases/ViewAllCust";
+import ViewAllSC from "./Components/UseCases/ViewAllSC";
+import ViewAllVehicles from "./Components/UseCases/ViewAllVehicles";
 
 function App() {
   return (
@@ -65,21 +70,22 @@ function App() {
 
         {/* ---------------------------------- Service Center ----------------------------------*/}
         <Route path="/serviceHome" element={<ServiceCenterHomePage />}>
-          <Route
-            path="updateProgress"
-            element={<UpdateServiceProgress />}
-          ></Route>
-          <Route path="viewScLogin" element={<CreatePackages />}></Route>
-          <Route path="changePwd" element={<ChangePassword />}></Route>
+          <Route path="updateProgress" element={<UpdateServiceProgress />} />
+          <Route path="viewPackages" element={<ViewPackages />} />
+          <Route path="viewScLogin" element={<CreatePackages />} />
+          <Route path="changePwd" element={<ChangePassword />} />
         </Route>
         {/* ---------------------------------- Service Center ----------------------------------*/}
 
         {/*----------- Admin ----------*/}
-        <Route path="adminhome" element={<AdminHome />}>
+        <Route path="adminHome" element={<AdminHome />}>
           <Route path="view" element={<ViewServiceRequests />}></Route>
           <Route path="changePwd" element={<ChangePassword />}></Route>
-        </Route>
 
+          <Route path="ViewAllCust" element={<ViewAllCust />}></Route>
+          <Route path="ViewAllSC" element={<ViewAllSC />}></Route>
+          <Route path="ViewAllVehicles" element={<ViewAllVehicles />}></Route>
+        </Route>
         {/*----------- Admin----------*/}
       </Routes>
     </div>

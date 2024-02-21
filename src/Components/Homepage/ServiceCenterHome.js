@@ -80,7 +80,7 @@ export default function ServiceCenterHome() {
                 <a
                   className="nav-link active"
                   aria-current="page"
-                  href="/customerhome"
+                  href="/serviceHome"
                 >
                   Home
                 </a>
@@ -104,27 +104,27 @@ export default function ServiceCenterHome() {
                 </NavDropdown>
               </li>
               <li className="nav-item">
+                <Link to="viewPackages" className="nav-link px-3">
+                  View Packages
+                </Link>
+              </li>
+              <li className="nav-item">
                 <Link to="viewScLogin" className="nav-link px-3">
                   Create Service Packages
                 </Link>
               </li>
               {/* <li className="nav-item">
-                <Link to="viewBookings" className="nav-link px-3">
-                  View Bookings
-                </Link>
-              </li> */}
+      <Link to="viewBookings" className="nav-link px-3">
+        View Bookings
+      </Link>
+    </li> */}
               <li>
                 <Link to="updateProgress" className="nav-link px-3">
                   Update Service Progress
                 </Link>
               </li>
               <li>
-                <Link
-                  to="/"
-                  className="nav-link px-3"
-                  //onClick={{ mystate: false }}
-                  id="logout"
-                >
+                <Link to="/" className="nav-link px-3" id="logout">
                   Logout
                 </Link>
               </li>

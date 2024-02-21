@@ -1,3 +1,4 @@
+
 import { useEffect, useReducer, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -24,7 +25,14 @@ export default function CustRegistration() {
       case "update":
         return {
           ...state,
-          [action.fld]: action.value,
+          [action.data.key]: {
+            ...state[action.data.key],
+            value: action.data.val,
+            touched: action.data.touched,
+            valid: action.data.valid,
+            error: action.data.error,
+          },
+          formValid: action.data.formValid,
         };
       case "reset":
         return init;
@@ -650,3 +658,5 @@ export default function CustRegistration() {
     </div>
   );
 }
+
+

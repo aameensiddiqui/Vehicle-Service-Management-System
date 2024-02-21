@@ -12,7 +12,7 @@ export default function Booking() {
   const [pkgs, setPkgs] = useState([]);
   const [pkgid, setPkgid] = useState("");
   const [data, setData] = useState([]);
-  const [scmsg, setScmsg] = useState("");
+  const [scmsg, setScmsg] = useState("")
   const [pkgmsg, setPkgmsg] = useState("");
 
   const [sc_res, setSc_res] = useState(false);

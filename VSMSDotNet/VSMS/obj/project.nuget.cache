@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "kmK04nlUlUS691xb665p/ldVgH7cSxJeLDJHtXFqQfM30zlWe+ffh1i0HCRGtv/vf5WVtSvvqDmvACLpdOTSqg==",
+  "dgSpecHash": "YOLJmhtKsZYReancqxtavNpqlwohax57Qyjg81Itw2musHnXknz9KHxJ5jkJrYgM+ujt1Hep3lW8H8vBGq7X6g==",
   "success": true,
-  "projectFilePath": "D:\\VSMSDotNet\\VSMS\\VSMS.csproj",
+  "projectFilePath": "F:\\zBackup\\20240220 (1.0)\\VSMS\\VSMSDotNet\\VSMS\\VSMS.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\hp\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\hp\\.nuget\\packages\\microsoft.entityframeworkcore\\6.0.14\\microsoft.entityframeworkcore.6.0.14.nupkg.sha512",
