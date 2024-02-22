@@ -135,8 +135,8 @@ export default function CustomerHomePage() {
 
               <li>
                 <Link
-                  // to="/logout"
-                  to="/"
+                  to="/logout"
+                  // to="/"
                   className="nav-link px-3"
                   //onClick={{ mystate: false }}
                   id="logout"

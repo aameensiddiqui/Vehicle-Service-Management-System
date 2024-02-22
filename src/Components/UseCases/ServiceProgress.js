@@ -92,6 +92,7 @@ export default function ServiceProgress() {
                   <th>Cost</th>
                   <th>Facilities Count</th>
                   <th>Track Progress</th>
+                  <th>Service Request ID</th>
                 </tr>
               </thead>
               <tbody>

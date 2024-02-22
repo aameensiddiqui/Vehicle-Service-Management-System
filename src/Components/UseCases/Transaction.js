@@ -33,7 +33,7 @@ export default function Transaction({
               <tr>
                 <td colSpan={2} style={{ textAlign: "center" }}>
                   <select onChange={handlePaymentModeChange}>
-                  
+                    <option disabled>Select One</option>
                     <option value="UPI">UPI</option>
                     <option value="Cash">Cash</option>
                   </select>

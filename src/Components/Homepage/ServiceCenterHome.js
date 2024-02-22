@@ -124,7 +124,7 @@ export default function ServiceCenterHome() {
                 </Link>
               </li>
               <li>
-                <Link to="/" className="nav-link px-3" id="logout">
+                <Link to="/logout" className="nav-link px-3" id="logout">
                   Logout
                 </Link>
               </li>

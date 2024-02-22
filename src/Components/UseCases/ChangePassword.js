@@ -1,7 +1,7 @@
-
 import React, { useReducer, useState } from "react";
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import Notification from "../Notification";
 
 export default function ChangePassword() {
   const init = {
@@ -22,13 +22,20 @@ export default function ChangePassword() {
   };
 
   const [info, dispatch] = useReducer(reducer, init);
-  const [msg, setmsg] = useState("");
+  const [notification, setNotification] = useState(null);
   const navigate = useNavigate();
+
+  const showNotification = (message, type) => {
+    setNotification({ message, type });
+    setTimeout(() => {
+      setNotification(null);
+    }, 1000);
+  };
 
   const sendData = (e) => {
     e.preventDefault();
     if (info.pwd !== info.confirmPwd) {
-      alert("Passwords do not match!");
+      showNotification("Passwords do not match!", "error");
       return;
     }
 
@@ -46,14 +53,16 @@ export default function ChangePassword() {
     )
       .then(function (response) {
         if (response.status === 200) {
-          alert("Password changed Successfully. Try Login...");
-          navigate("/Login");
+          showNotification("Password changed Successfully. Try Login...", "success");
+          setTimeout(() => {
+            navigate("/Login");
+          }, 1000); // Navigate after 1 second
         } else {
-          alert("Wrong credentials");
+          showNotification("Wrong credentials", "error");
         }
       })
       .catch(function (error) {
-        alert("Server error try later...");
+        showNotification("Server error try later...", "error");
       });
   };
 
@@ -62,6 +71,13 @@ export default function ChangePassword() {
       <h3 className="title" style={{ textAlign: "center", paddingBottom: 30 }}>
         Change Password
       </h3>
+      {notification && (
+        <Notification
+          message={notification.message}
+          type={notification.type}
+          onClose={() => setNotification(null)}
+        />
+      )}
       <form>
         <div className="row">
           <div className="col"></div>
@@ -160,6 +176,8 @@ export default function ChangePassword() {
     </div>
   );
 }
+
+
 
 
 /*

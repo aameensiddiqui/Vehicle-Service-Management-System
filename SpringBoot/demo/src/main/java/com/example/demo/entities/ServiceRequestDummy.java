@@ -45,5 +45,11 @@ public class ServiceRequestDummy {
 	public void setPackageid(int packageid) {
 		this.packageid = packageid;
 	}
+	@Override
+	public String toString() {
+		return "ServiceRequestDummy [bookingdate=" + bookingdate + ", servicdate=" + servicdate + ", pickuptime="
+				+ pickuptime + ", vehicleid=" + vehicleid + ", servicecenterid=" + servicecenterid + ", packageid="
+				+ packageid + "]";
+	}
 	
 }

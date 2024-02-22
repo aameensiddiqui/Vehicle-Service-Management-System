@@ -548,7 +548,7 @@ export default function ViewServiceRequests() {
     setNotification({ message, type });
     setTimeout(() => {
       setNotification(null);
-    }, 3000); // Close the notification after 3 seconds
+    }, 3000); 
   };
 
   const handleApprove = async (id) => {
@@ -560,13 +560,13 @@ export default function ViewServiceRequests() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          status: true, // Approve: Set status to true
+          status: true, 
         }),
       });
       if (response.ok) {
         showNotification("Approved Request Successfully !", "success");
         setTimeout(() => {
-          window.location.reload(); // Reload the page after successful deactivation
+          window.location.reload(); 
         }, 1000);
       } else {
         showNotification("Approved Request Failed.", "error");
@@ -585,14 +585,14 @@ export default function ViewServiceRequests() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          status: false, // Deactivate: Set status to false
+          status: false, 
         }),
       });
       if (response.ok) {
         showNotification("Account Deactivated Successfully !", "success");
         setTimeout(() => {
-          window.location.reload(); // Reload the page after successful deactivation
-        }, 1000); // Delay reload for 1 seconds to display notification
+          window.location.reload(); 
+        }, 1000); 
       } else {
         showNotification("Deactivation Failed.", "error");
       }
@@ -616,7 +616,7 @@ export default function ViewServiceRequests() {
           <thead>
             <tr>
               <th>ID</th>
-              <th>Name</th>
+              <th>User ID</th>
               <th>Status</th>
               <th>Actions</th>
             </tr>
@@ -626,7 +626,7 @@ export default function ViewServiceRequests() {
               <tr key={index}>
                 <td>{center.loginid}</td>
                 <td>{center.userid}</td>
-                <td>{center.status ? "Approved" : "Need Action"}</td>
+                <td>{center.status ? "Active" : "Need Action"}</td>
                 <td>
                   {!center.status && (
                     <Button

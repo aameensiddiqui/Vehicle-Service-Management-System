@@ -48,23 +48,18 @@ export default function AdminHome() {
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link
-                    to="ViewAllCust"
-                    className="nav-link px-3"
-                  >
+                  <Link to="ViewAllCust" className="nav-link px-3">
                     View All Customers
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link
-                    to="ViewAllVehicles"
-                    className="nav-link px-3"
-                  >
+                  <Link to="ViewAllVehicles" className="nav-link px-3">
                     View Registered Vehicles
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link to="ViewAllSC"
+                  <Link
+                    to="ViewAllSC"
                     className="nav-link px-3"
                     aria-current="page"
                   >

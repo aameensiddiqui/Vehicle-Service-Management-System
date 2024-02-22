@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, Outlet } from "react-router-dom";
-import axios from "axios";
+// import axios from "axios";
 
 export default function ViewServiceCenters() {
   const [allarea, setAllarea] = useState([]);
@@ -20,8 +20,8 @@ export default function ViewServiceCenters() {
 
   const [ratings, setRatins] = useState(0);
   let servicecenterid = 3;
-  const getRarting = () => {
-    fetch("http://localhost:8080/getrating=" + servicecenterid)
+  const getRating = () => {
+    fetch("http://localhost:8080/getRating=" + servicecenterid)
       .then((resp) => resp.json())
       .then((a) => setRatins(a));
   };

@@ -1,4 +1,3 @@
-
 import { useEffect, useReducer, useState } from "react";
 import BackgroundSlider from "react-background-slider";
 import { useDispatch } from "react-redux";
@@ -18,14 +17,14 @@ export default function BookAppointment() {
 
   const [showRes, setShowRes] = useState(false);
   const [showMsg, setShowMsg] = useState(false);
-
+  const [pkgid, setpkgit] = useState(1);
   const init = {
     servicdate: new Date(),
     pickuptime: { value: "", error: "", valid: false, touched: false },
     vehicleid: 0,
     brandid: localStorage.getItem("bid"),
     servicecenterid: localStorage.getItem("scid"),
-    packageid: localStorage.getItem("pkgid"),
+    packageid: pkgid,
     bookingdate: new Date(),
   };
   const reducer = (state, action) => {
@@ -139,15 +138,13 @@ export default function BookAppointment() {
   };
 
   const sendData = () => {
-    // console.log("*************************");
-    // console.log(info);
-    // console.log("*************************");
     const reqOptions = {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(info),
     };
-
+    console.log("**************************************");
+    console.log(reqOptions.body);
     fetch("http://localhost:8080/addServiceRequest", reqOptions)
       .then((resp) => resp.json())
       .then((jsonData) => {
@@ -227,7 +224,7 @@ export default function BookAppointment() {
           <span style={{ color: "red" }}> View Service Centers Menu</span>
         </h5>
       </span>
-     { /* ------------------ res --------------------------- */}
+      {/* ------------------ res --------------------------- */}
       <div id="res" style={{ display: showRes ? "none" : "block" }}>
         <div style={{ width: "auto", overflowX: "auto", overflowY: "auto" }}>
           <form onSubmit={(e) => e.preventDefault()}>
@@ -351,7 +348,7 @@ export default function BookAppointment() {
           </form>
         </div>
       </div>
-      
+
       <Outlet />
     </div>
   );

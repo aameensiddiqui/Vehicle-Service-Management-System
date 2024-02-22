@@ -7,13 +7,15 @@ import { BrowserRouter } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import store from "./Components/store";
 import { Provider } from "react-redux";
-
+import ErrorBoundary from './Components/ErrorPage/ErrorBoundary';
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={store}>
     <BrowserRouter>
       <React.StrictMode>
+      <ErrorBoundary>
         <App />
+        </ErrorBoundary>
       </React.StrictMode>
     </BrowserRouter>
   </Provider>

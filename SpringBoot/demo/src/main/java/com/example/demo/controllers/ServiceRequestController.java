@@ -52,7 +52,7 @@ public class ServiceRequestController {
 	@PostMapping("/addServiceRequest")
 	public ResponseEntity<ServiceRequest> addServiceRequest(@RequestBody ServiceRequestDummy servreq) {
 		System.out.println("in Service Request Constroller**********************************");
-
+		System.out.println(servreq);
 		Date bookingdate = servreq.getServicdate();
 
 		System.out.print("Booking date-" + bookingdate);

@@ -45,7 +45,7 @@ export default function VehDetails() {
               <th>Vehicle Number</th>
               <th>Registration Year</th>
               <th>Brand</th>
-              <th>Fulet Type</th>
+              <th>Fuel Type</th>
             </tr>
           </thead>
           <tbody>
