@@ -92,14 +92,24 @@ export default function ServiceProgress() {
                   <th>Cost</th>
                   <th>Facilities Count</th>
                   <th>Track Progress</th>
-                  <th>Service Request ID</th>
                 </tr>
               </thead>
               <tbody>
                 {servcData.map((s, index) => {
                   return (
                     <tr key={index}>
-                      <td>{JSON.stringify(s.servicdate).slice(1, 11)}</td>
+                      {/* <td>{JSON.stringify(s.servicdate).slice(1, 11)}</td> */}
+                      {/* <td>{new Date(new Date(JSON.stringify(s.servicdate).slice(1, 11)) + 86400000).toISOString().slice(0, 10)}</td> */}
+                      <td>
+                        {new Date(
+                          new Date(
+                            JSON.stringify(s.servicdate).slice(1, 11)
+                          ).getTime() + 86400000
+                        )
+                          .toISOString()
+                          .slice(0, 10)}
+                      </td>
+
                       <td>{s.vehid.vehiclenumber}</td>
                       <td>{s.pickuptime}</td>
                       <td>{s.vehid.brandid.bname}</td>
@@ -114,7 +124,7 @@ export default function ServiceProgress() {
                           Track
                         </button>
                       </td>
-                      <td>{s.servicerequestid}</td>
+                      {/* <td>{s.servicerequestid}</td> */}
                     </tr>
                   );
                 })}
@@ -153,7 +163,7 @@ export default function ServiceProgress() {
                     <td>{progressData?.stagetwo?.slice(11, 19)}</td>
                     <td>{progressData?.checkout?.slice(11, 19)}</td>
                     <td>{progressData?.delivered?.toString()}</td>
-                    <td>
+                    {/* <td>
                       <button
                         onClick={() => {
                           getInvoiceData(
@@ -163,7 +173,7 @@ export default function ServiceProgress() {
                       >
                         Invoice
                       </button>
-                    </td>
+                    </td> */}
                   </tr>
                 </tbody>
               </table>

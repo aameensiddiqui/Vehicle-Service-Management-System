@@ -182,7 +182,6 @@ export default LoginPage;
 */
 /************************************************************************************************************************************************************************* */
 
-
 // import React, { useState } from "react";
 // import { useDispatch } from "react-redux";
 // import { Link, useNavigate } from "react-router-dom";
@@ -418,7 +417,9 @@ function LoginPage() {
         } else if (jsonData.roleid.roleid === 2) {
           if (jsonData.status === false) {
             setLoginFailed(true); // Display login failed notification
-            setNotificationMessage("Your account is either deactivated or not verified yet");
+            setNotificationMessage(
+              "Your account is either deactivated or not verified yet"
+            );
           } else {
             reduxAction(login());
             navigate("/serviceHome");
@@ -431,7 +432,9 @@ function LoginPage() {
       .catch((e) => {
         console.log(e);
         setLoginFailed(true); // Display login failed notification
-        setNotificationMessage("An error occurred while logging in. Please try again later.");
+        setNotificationMessage(
+          "User-ID and Password do not match. Please try again later."
+        );
       });
   };
 

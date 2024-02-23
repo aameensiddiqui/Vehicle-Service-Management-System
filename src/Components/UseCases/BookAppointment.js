@@ -3,7 +3,6 @@ import BackgroundSlider from "react-background-slider";
 import { useDispatch } from "react-redux";
 import { Outlet, useNavigate, Link } from "react-router-dom";
 import moment from "moment";
-import Notification from "../Notification";
 
 export default function BookAppointment() {
   let navigate = useNavigate();
@@ -17,14 +16,14 @@ export default function BookAppointment() {
 
   const [showRes, setShowRes] = useState(false);
   const [showMsg, setShowMsg] = useState(false);
-  const [pkgid, setpkgit] = useState(1);
+
   const init = {
     servicdate: new Date(),
     pickuptime: { value: "", error: "", valid: false, touched: false },
     vehicleid: 0,
     brandid: localStorage.getItem("bid"),
     servicecenterid: localStorage.getItem("scid"),
-    packageid: pkgid,
+    packageid: localStorage.getItem("pkgid"),
     bookingdate: new Date(),
   };
   const reducer = (state, action) => {
@@ -138,13 +137,15 @@ export default function BookAppointment() {
   };
 
   const sendData = () => {
+    // console.log("*************************");
+    // console.log(info);
+    // console.log("*************************");
     const reqOptions = {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(info),
     };
-    console.log("**************************************");
-    console.log(reqOptions.body);
+
     fetch("http://localhost:8080/addServiceRequest", reqOptions)
       .then((resp) => resp.json())
       .then((jsonData) => {
@@ -221,7 +222,10 @@ export default function BookAppointment() {
       <span id="msg" style={{ display: showMsg ? "none" : "block" }}>
         <h5>
           Select Service Center and Package first - To select Please Go to
-          <span style={{ color: "red" }}> View Service Centers Menu</span>
+          <span style={{ color: "red" }}>
+            {" "}
+            <Link to={"/customerhome/viewScLogin"}>View Service Centers Menu</Link>{" "}
+          </span>
         </h5>
       </span>
       {/* ------------------ res --------------------------- */}

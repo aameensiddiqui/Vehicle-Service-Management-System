@@ -300,12 +300,11 @@ export default function Booking() {
                   <td>Select Package :</td>
                   <td>
                     <select
-                      value={pkgid}
                       onChange={(e) => {
                         setPkgid(e.target.value);
                       }}
                     >
-                      <option disabled>Select One</option>
+                      <option>Select One</option>
                       {pkgs.map((p, index) => {
                         return (
                           <option key={index} value={p.packagedetailsid}>

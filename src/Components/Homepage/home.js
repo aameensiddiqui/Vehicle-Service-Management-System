@@ -1,5 +1,5 @@
 import React from "react";
-import Img1 from "../Images/HomeBackgroundImage.jpeg";
+import Img1 from "../Images/IMG2.jpg";
 import { useSelector } from "react-redux";
 export default function Home() {
   return (
@@ -7,9 +7,9 @@ export default function Home() {
       <div
         style={{
           backgroundImage: `url(${Img1})`,
-          height: "87.5vh",
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "cover",
+          height: "100vh",
+          // backgroundRepeat: "no-repeat",
+          // backgroundSize: "cover",
         }}
         className="img-fluid"
       ></div>

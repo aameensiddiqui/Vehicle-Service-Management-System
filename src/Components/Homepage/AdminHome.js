@@ -92,7 +92,7 @@ export default function AdminHome() {
 
                 <li>
                   <Link
-                    to="/"
+                    to="/logout"
                     className="nav-link px-3"
                     onClick={{ mystate: false }}
                     id="logout"
