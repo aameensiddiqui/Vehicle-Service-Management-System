@@ -5,9 +5,9 @@ export default function Footer() {
         className="text-center p-3"
         style={{ backgroundColor: "rgba(0, 0, 0, 0.2)" }}
       >
-        © 2023 Copyright :
+        © 2024 Copyright :
         <a className="text-black" href="#" style={{ textDecoration: "none" }}>
-          THE VEHICLE MANAGEMENT SYSTEM
+          THE VEHICLE SERVICE MANAGEMENT SYSTEM
         </a>
       </div>
     </footer>

@@ -116,7 +116,7 @@ public class LoginController {
     
     @PostMapping("/logincheck")
     public Login logincheck(@RequestBody Login login) {
-        // Removed the salt and encryption
+    	System.out.println(login);
         String password = login.getPassword();
         return logserv.getLogin(login.getUserid(), password);
     }

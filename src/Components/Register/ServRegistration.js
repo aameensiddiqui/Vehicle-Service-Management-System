@@ -139,35 +139,95 @@ export default function ServRegistration() {
       body: JSON.stringify(info),
     };
     fetch("http://localhost:8080/registerservicecenter", reqOptions)
-      .then((resp) => {
-        resp.json();
-        if (resp.status === 200) {
-          alert("Registration Successful...!");
-          navigate("/login");
-        } else alert("Registration Failed");
-      })
-      .then((obj) => console.log(JSON.stringify(obj)));
+    .then(resp => {
+      if (!resp.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return resp.json();
+    })
+    .then(data => {
+      // Process the data
+      console.log(data);
+    })
+    .catch(error => {
+      // Handle fetch error
+      console.error('Error fetching data:', error.message);
+      // Display an error message to the user
+     navigate("/ServerError")
+    });
   };
-
+  function displayErrorMessage(message) {
+    // Display the error message to the user, for example, in a modal or an alert
+    alert(message);
+  }
   const getAreas = (id) => {
     fetch("http://localhost:8080/getAreaByCityId?id=" + id)
-      .then((resp) => resp.json())
-      .then((a) => setAllarea(a));
+    .then(resp => {
+      if (!resp.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return resp.json();
+    })
+    .then((a) => setAllarea(a))
+    .catch(error => {
+      // Handle fetch error
+      console.error('Error fetching data:', error.message);
+      // Display an error message to the user
+     navigate("/ServerError")
+    });
   };
+  
 
   useEffect(() => {
     fetch("http://localhost:8080/getBrands")
-      .then((resp) => resp.json())
-      .then((c) => setAllbrands(c));
+    .then(resp => {
+      if (!resp.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return resp.json();
+    })
+   
+    .then((c) => setAllbrands(c))
+    .catch(error => {
+      // Handle fetch error
+      console.error('Error fetching data:', error.message);
+      // Display an error message to the user
+     navigate("/ServerError")
+    });
+  
 
     fetch("http://localhost:8080/getCities")
-      .then((resp) => resp.json())
-      .then((c) => setAllcities(c));
+    .then(resp => {
+      if (!resp.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return resp.json();
+    })
+    .then((c) => setAllcities(c))
+    .catch(error => {
+      // Handle fetch error
+      console.error('Error fetching data:', error.message);
+      // Display an error message to the user
+     navigate("/ServerError")
+    });
+  
 
     fetch("http://localhost:8080/getQuestions")
-      .then((resp) => resp.json())
-      .then((q) => setAllques(q));
-  }, []);
+    .then(resp => {
+      if (!resp.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return resp.json();
+    })
+    .then((q) => setAllques(q))
+    .catch(error => {
+      // Handle fetch error
+      console.error('Error fetching data:', error.message);
+      // Display an error message to the user
+     navigate("/ServerError")
+    });
+  }
+  )
 
   return (
     <div style={{ backgroundColor: "white" }}>

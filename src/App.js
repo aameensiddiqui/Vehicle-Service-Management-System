@@ -29,6 +29,7 @@ import ForgotPassword from "./Components/UseCases/ForgotPassword";
 import Logout from "./Components/Logout";
 import ChangePassword from "./Components/UseCases/ChangePassword";
 import Rating from "./Components/UseCases/Rating";
+import ServerError from "./Components/ErrorPage/ServerError";
 
 function App() {
   const mystate = useSelector((state) => state.logged);
@@ -177,7 +178,9 @@ function App() {
               </Route>
               {/*----------- Admin----------*/}
               {/*----------- Error----------*/}
+              <Route path="/ServerError" element={<ServerError />}></Route>
               <Route path="*" element={<NotFound />}></Route>
+
               {/*----------- Error----------*/}
             </Routes>
           </div>

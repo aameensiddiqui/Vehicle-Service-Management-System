@@ -99,4 +99,11 @@ public class Login {
 		this.questionid = questionid;
 	}
 
+	@Override
+	public String toString() {
+		return "Login [loginid=" + loginid + ", userid=" + userid + ", password=" + password + ", answer=" + answer
+				+ ", status=" + status + ", roleid=" + roleid + ", questionid=" + questionid + "]";
+	}
+
+	
 }

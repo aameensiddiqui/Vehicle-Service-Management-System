@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "F:\\zBackup\\20240220 (1.0)\\VSMS\\VSMSDotNet\\VSMS\\VSMS.csproj": {}
+    "F:\\zBackup\\20240222 (1.0)\\VSMS\\VSMSDotNet\\VSMS\\VSMS.csproj": {}
   },
   "projects": {
-    "F:\\zBackup\\20240220 (1.0)\\VSMS\\VSMSDotNet\\VSMS\\VSMS.csproj": {
+    "F:\\zBackup\\20240222 (1.0)\\VSMS\\VSMSDotNet\\VSMS\\VSMS.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\zBackup\\20240220 (1.0)\\VSMS\\VSMSDotNet\\VSMS\\VSMS.csproj",
+        "projectUniqueName": "F:\\zBackup\\20240222 (1.0)\\VSMS\\VSMSDotNet\\VSMS\\VSMS.csproj",
         "projectName": "VSMS",
-        "projectPath": "F:\\zBackup\\20240220 (1.0)\\VSMS\\VSMSDotNet\\VSMS\\VSMS.csproj",
+        "projectPath": "F:\\zBackup\\20240222 (1.0)\\VSMS\\VSMSDotNet\\VSMS\\VSMS.csproj",
         "packagesPath": "C:\\Users\\hp\\.nuget\\packages\\",
-        "outputPath": "F:\\zBackup\\20240220 (1.0)\\VSMS\\VSMSDotNet\\VSMS\\obj\\",
+        "outputPath": "F:\\zBackup\\20240222 (1.0)\\VSMS\\VSMSDotNet\\VSMS\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\hp\\AppData\\Roaming\\NuGet\\NuGet.Config",
