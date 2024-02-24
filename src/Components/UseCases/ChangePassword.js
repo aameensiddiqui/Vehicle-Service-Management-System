@@ -53,7 +53,10 @@ export default function ChangePassword() {
     )
       .then(function (response) {
         if (response.status === 200) {
-          showNotification("Password changed Successfully. Try Login...", "success");
+          showNotification(
+            "Password changed Successfully. Try Login...",
+            "success"
+          );
           setTimeout(() => {
             navigate("/Login");
           }, 1000); // Navigate after 1 second
@@ -176,9 +179,6 @@ export default function ChangePassword() {
     </div>
   );
 }
-
-
-
 
 /*
 import React, { useReducer, useState } from "react";
