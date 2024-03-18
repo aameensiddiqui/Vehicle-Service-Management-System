@@ -1,3 +1,140 @@
+import React, { useState, useEffect } from "react";
+import { Table, Button, ButtonGroup } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+import Notification from "../Notification";
+
+
+export default function ViewServiceRequests() {
+  const [centers, setCenters] = useState([]);
+  const [id, setId] = useState("");
+  const [notification, setNotification] = useState(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    fetch("http://localhost:8080/serviceCenters")
+      .then((resp) => resp.json())
+      .then((jsonData) => setCenters(jsonData))
+      .catch((error) => console.error("Error fetching data:", error));
+  }, []);
+
+  const showNotification = (message, type) => {
+    setNotification({ message, type });
+    setTimeout(() => {
+      setNotification(null);
+    }, 3000); 
+  };
+
+  const handleApprove = async (id) => {
+    const url = "http://localhost:8080/updateReq/" + id;
+    try {
+      const response = await fetch(url, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          status: true, 
+        }),
+      });
+      if (response.ok) {
+        showNotification("Approved Request Successfully !", "success");
+        setTimeout(() => {
+          window.location.reload(); 
+        }, 1000);
+      } else {
+        showNotification("Approved Request Failed.", "error");
+      }
+    } catch (error) {
+      console.error("Error updating request:", error);
+    }
+  };
+
+  const handleDeactivate = async (id) => {
+    const url = "http://localhost:8080/updateReq/" + id;
+    try {
+      const response = await fetch(url, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          status: false, 
+        }),
+      });
+      if (response.ok) {
+        showNotification("Account Deactivated Successfully !", "success");
+        setTimeout(() => {
+          window.location.reload(); 
+        }, 1000); 
+      } else {
+        showNotification("Deactivation Failed.", "error");
+      }
+    } catch (error) {
+      console.error("Error deactivating account:", error);
+    }
+  };
+
+  return (
+    <>
+      {notification && (
+        <Notification
+          message={notification.message}
+          type={notification.type}
+          onClose={() => setNotification(null)}
+        />
+      )}
+      <h1 className="text-center mt-5">All Requests :</h1>
+      <div>
+        <Table striped bordered hover>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>User ID</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {centers.map((center, index) => (
+              <tr key={index}>
+                <td>{center.loginid}</td>
+                <td>{center.userid}</td>
+                <td>{center.status ? "Active" : "Need Action"}</td>
+                <td>
+                  {!center.status && (
+                    <Button
+                      variant="success"
+                      onClick={() => {
+                        setId(center.loginid);
+                        handleApprove(center.loginid);
+                      }}
+                      disabled={center.status}
+                    >
+                      Approve
+                    </Button>
+                  )}
+                  {center.status && (
+                    <Button
+                      variant="warning"
+                      onClick={() => {
+                        setId(center.loginid);
+                        handleDeactivate(center.loginid);
+                      }}
+                      disabled={!center.status}
+                    >
+                      Deactivate
+                    </Button>
+                  )}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
+      </div>
+    </>
+  );
+}
+
 /*
 import React, { useState, useEffect } from "react";
 import { Table, Button } from "react-bootstrap";
@@ -524,140 +661,3 @@ export default function ViewServiceRequests() {
 }
 
 */}
-
-import React, { useState, useEffect } from "react";
-import { Table, Button, ButtonGroup } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
-import Notification from "../Notification";
-
-
-export default function ViewServiceRequests() {
-  const [centers, setCenters] = useState([]);
-  const [id, setId] = useState("");
-  const [notification, setNotification] = useState(null);
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    fetch("http://localhost:8080/serviceCenters")
-      .then((resp) => resp.json())
-      .then((jsonData) => setCenters(jsonData))
-      .catch((error) => console.error("Error fetching data:", error));
-  }, []);
-
-  const showNotification = (message, type) => {
-    setNotification({ message, type });
-    setTimeout(() => {
-      setNotification(null);
-    }, 3000); 
-  };
-
-  const handleApprove = async (id) => {
-    const url = "http://localhost:8080/updateReq/" + id;
-    try {
-      const response = await fetch(url, {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          status: true, 
-        }),
-      });
-      if (response.ok) {
-        showNotification("Approved Request Successfully !", "success");
-        setTimeout(() => {
-          window.location.reload(); 
-        }, 1000);
-      } else {
-        showNotification("Approved Request Failed.", "error");
-      }
-    } catch (error) {
-      console.error("Error updating request:", error);
-    }
-  };
-
-  const handleDeactivate = async (id) => {
-    const url = "http://localhost:8080/updateReq/" + id;
-    try {
-      const response = await fetch(url, {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          status: false, 
-        }),
-      });
-      if (response.ok) {
-        showNotification("Account Deactivated Successfully !", "success");
-        setTimeout(() => {
-          window.location.reload(); 
-        }, 1000); 
-      } else {
-        showNotification("Deactivation Failed.", "error");
-      }
-    } catch (error) {
-      console.error("Error deactivating account:", error);
-    }
-  };
-
-  return (
-    <>
-      {notification && (
-        <Notification
-          message={notification.message}
-          type={notification.type}
-          onClose={() => setNotification(null)}
-        />
-      )}
-      <h1 className="text-center mt-5">All Requests :</h1>
-      <div>
-        <Table striped bordered hover>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>User ID</th>
-              <th>Status</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {centers.map((center, index) => (
-              <tr key={index}>
-                <td>{center.loginid}</td>
-                <td>{center.userid}</td>
-                <td>{center.status ? "Active" : "Need Action"}</td>
-                <td>
-                  {!center.status && (
-                    <Button
-                      variant="success"
-                      onClick={() => {
-                        setId(center.loginid);
-                        handleApprove(center.loginid);
-                      }}
-                      disabled={center.status}
-                    >
-                      Approve
-                    </Button>
-                  )}
-                  {center.status && (
-                    <Button
-                      variant="warning"
-                      onClick={() => {
-                        setId(center.loginid);
-                        handleDeactivate(center.loginid);
-                      }}
-                      disabled={!center.status}
-                    >
-                      Deactivate
-                    </Button>
-                  )}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </Table>
-      </div>
-    </>
-  );
-}
